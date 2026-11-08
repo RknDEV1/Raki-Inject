@@ -135,6 +135,36 @@ private extension AppSection {
     }
 }
 
+private struct RakiHeroBanner: View {
+    @AppStorage("raki.banner.index") private var selectedIndex = 0
+    @AppStorage("raki.banner.enabled") private var isEnabled = true
+    @Environment(\.scenePhase) private var scenePhase
+
+    var body: some View {
+        Group {
+            if isEnabled,
+               let url = Bundle.main.url(forResource: "raki-banner-\(selectedIndex + 1)", withExtension: "mp4") {
+                RakiLoopingVideoView(url: url, isPlaying: scenePhase == .active)
+            } else {
+                LinearGradient(
+                    colors: [Color.black, Color(white: 0.16)],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+            }
+        }
+        .frame(height: 154)
+        .frame(maxWidth: .infinity)
+        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .stroke(Color.white.opacity(0.10), lineWidth: 1)
+        }
+        .padding(.horizontal, 16)
+        .accessibilityLabel("Fundo animado do Raki")
+    }
+}
+
 // MARK: - DashboardView
 private struct DashboardView: View {
     @Environment(\.appLanguage) private var language
@@ -143,16 +173,21 @@ private struct DashboardView: View {
     @State private var showLogs = false
     var body: some View {
         NavigationStack {
-            VStack(spacing: 7) {
-                deviceSection
-                    .fixedSize(horizontal: false, vertical: true)
-                VStack(spacing: 12) {
-                    FreeFireGameEntryView(game: .max)
-                    FreeFireGameEntryView(game: .regular)
-                    FreeFireGameEntryView(game: .capCut)
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 14) {
+                    rakiHeader
+                    RakiHeroBanner()
+                    deviceSection
+                        .fixedSize(horizontal: false, vertical: true)
+                    VStack(spacing: 12) {
+                        FreeFireGameEntryView(game: .regular)
+                        FreeFireGameEntryView(game: .max)
+                        FreeFireGameEntryView(game: .capCut)
+                    }
                 }
-                .frame(maxHeight: .infinity, alignment: .top)
+                .padding(.bottom, 18)
             }
+            .background(Color(uiColor: .systemBackground))
             .navigationBarTitleDisplayMode(.inline)
             .tint(AppTheme.accent)
             .toolbar {
@@ -172,6 +207,25 @@ private struct DashboardView: View {
             .sheet(isPresented: $showSettings) { SettingsView() }
             .sheet(isPresented: $showLogs) { LogView() }
         }
+    }
+
+    private var rakiHeader: some View {
+        HStack(spacing: 12) {
+            AppLogo(size: 42)
+            VStack(alignment: .leading, spacing: 2) {
+                Text("Raki")
+                    .font(.title3.weight(.bold))
+                Text("Free Fire")
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(.secondary)
+            }
+            Spacer()
+            Label("Ativo", systemImage: "circle.fill")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(.green)
+        }
+        .padding(.horizontal, 16)
+        .padding(.top, 8)
     }
 
     private var deviceSection: some View {

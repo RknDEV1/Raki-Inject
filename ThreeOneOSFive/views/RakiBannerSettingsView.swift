@@ -17,15 +17,6 @@ struct RakiBannerSettingsView: View {
                         .frame(maxWidth: .infinity)
                         .frame(height: 168)
                         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                        .overlay(alignment: .bottomLeading) {
-                            Text("Raki · Fundo \(selectedIndex + 1)")
-                                .font(.caption.weight(.semibold))
-                                .foregroundStyle(.white)
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 7)
-                                .background(.black.opacity(0.58), in: Capsule())
-                                .padding(10)
-                        }
                 } else {
                     VStack(spacing: 8) {
                         Image(systemName: "photo.on.rectangle.angled")
@@ -113,7 +104,7 @@ private struct RakiBannerChoice: View {
     }
 }
 
-private struct RakiLoopingVideoView: UIViewRepresentable {
+struct RakiLoopingVideoView: UIViewRepresentable {
     let url: URL
     let isPlaying: Bool
 
@@ -134,7 +125,7 @@ private struct RakiLoopingVideoView: UIViewRepresentable {
     }
 }
 
-private final class PlayerView: UIView {
+final class PlayerView: UIView {
     private var player: AVPlayer?
     private var endObserver: NSObjectProtocol?
     private var appActiveObserver: NSObjectProtocol?
