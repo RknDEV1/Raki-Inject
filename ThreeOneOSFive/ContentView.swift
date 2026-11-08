@@ -65,7 +65,7 @@ struct ContentView: View {
                     )
                 }
             }
-            .navigationTitle("Support Patch")
+            .navigationTitle("Raki")
             .navigationSplitViewColumnWidth(min: 210, ideal: 240, max: 300)
         } detail: {
             sectionContent(selectedVisibleSection)

@@ -31,7 +31,7 @@ struct ThreeOneOSFiveApp: App {
         SecuritySuiteProbe.denyDebugger()
         ["activation_granted", "activation_account", "activation_password", "activation_uuid", "activation_expires_at"]
             .forEach(UserDefaults.standard.removeObject(forKey:))
-        log("app: Support Patch launching — iOS \(AppInfo.osVersion) (\(AppInfo.osBuild)) \(AppInfo.machineName)")
+        log("app: Raki launching — iOS \(AppInfo.osVersion) (\(AppInfo.osBuild)) \(AppInfo.machineName)")
     }
 
     private var language: AppLanguage {

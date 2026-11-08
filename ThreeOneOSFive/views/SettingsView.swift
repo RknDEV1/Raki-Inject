@@ -29,7 +29,7 @@ struct SettingsView: View {
                         AppLogo()
 
                         VStack(alignment: .leading, spacing: 3) {
-                            Text("Support Patch").font(.headline)
+                            Text("Raki").font(.headline)
                             Text(language.text("common.version", appVersion))
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
@@ -47,6 +47,8 @@ struct SettingsView: View {
                     .pickerStyle(.segmented)
                     .labelsHidden()
                 }
+
+                RakiBannerSettingsView()
 
                 Section(language.text("common.device")) {
                     LabeledContent(language.text("dashboard.hardware_model"), value: AppInfo.displayMachineName)
@@ -173,25 +175,7 @@ struct SettingsView: View {
                 } footer: {
                     Text(language.text("settings.supported_versions_footer"))
                 }
-                Section(language.text("settings.social_media")) {
-                    creditsRow(
-                        name: "Telegram",
-                        role: language.text("social.github_role"),
-                        url: "https://t.me/hole30601"
-                    )
-                    creditsRow(
-                        name: "Cộng Đồng Cheat",
-                        role: language.text("social.iosvn_role"),
-                        url: "https://t.me/hackchetafree"
-                    )
-                }
-
                 Section(language.text("settings.credits")) {
-                    creditsRow(
-                        name: "Hole30601",
-                        role: language.text("credit.yangjiii"),
-                        url: "https://t.me/hole30601"
-                    )
                     creditsRow(
                         name: "0xjohnnydev",
                         role: language.text("credit.filzaslop"),
