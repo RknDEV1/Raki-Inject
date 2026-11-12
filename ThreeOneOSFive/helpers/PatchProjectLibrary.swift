@@ -28,7 +28,8 @@ enum PatchProjectLibrary {
         "Súng Trắng", "Chạm Đỏ", "Aim Neck Free Fire", "Aim Body Free Fire",
         "Aim Drag Free Fire", "Aim Head Free Fire", "Aim Magic Free Fire", "Unlock FPS 144",
         "Chams + Holo tím", "Chams Không màu", "ChamsKhongMau",
-        "Định vị blue", "DinhViBlue", "Định Vị", "Mod Skin Gojo", "CapCut Pro"
+        "Định vị blue", "DinhViBlue", "Định Vị", "HS Alto", "HS Peito", "HS Pescoço",
+        "HS Pescoço (Bypass AP)", "AIM HEAD", "Mod Skin Gojo", "CapCut Pro"
     ]
 
     static func isBundledProject(_ project: PatchProject) -> Bool {

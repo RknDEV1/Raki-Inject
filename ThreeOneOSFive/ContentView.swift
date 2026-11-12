@@ -321,7 +321,12 @@ private extension FreeFireGame {
                 "ChamsKhongMau",
                 "Định vị blue",
                 "DinhViBlue",
-                "Định Vị"
+                "Định Vị",
+                "HS Alto",
+                "HS Peito",
+                "HS Pescoço",
+                "HS Pescoço (Bypass AP)",
+                "AIM HEAD"
             ]
         case .capCut: return []
         }
@@ -472,6 +477,11 @@ private struct FreeFirePatchView: View {
         case "Aim Head Free Fire": return language.text("freefire.aim_head")
         case "Aim Magic Free Fire": return language.text("freefire.aim_magic")
         case "Unlock FPS 144": return language.text("freefire.unlock_fps_144")
+        case "HS Alto": return "HS Alto"
+        case "HS Peito": return "HS Peito"
+        case "HS Pescoço": return "HS Pescoço"
+        case "HS Pescoço (Bypass AP)": return "HS Pescoço (Bypass AP)"
+        case "AIM HEAD": return "AIM HEAD"
         default: return item.project?.name ?? language.text("freefire.aim_file")
         }
     }
