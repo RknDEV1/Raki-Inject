@@ -177,6 +177,7 @@ private struct DashboardView: View {
 				VStack(spacing: 14) {
 					rakiHeader
 					RakiHeroBanner()
+					deviceSection
 					FreeFireGameEntryView(game: .regular)
 				}
                 .padding(.bottom, 18)
@@ -222,25 +223,20 @@ private struct DashboardView: View {
         .padding(.top, 8)
     }
 
-    private var deviceSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text(language.text("common.device"))
-                .font(.headline)
-                .foregroundStyle(.secondary)
-            LabeledContent(language.text("dashboard.hardware_model")) {
-                Text(AppInfo.displayMachineName)
-                    .font(.body.monospaced())
-            }
-            LabeledContent(language.text("settings.ios_version")) {
-                Text("\(AppInfo.osVersion) (\(AppInfo.osBuild))")
-                    .font(.body.monospaced())
-            }
-            HStack {
-                Text(language.text("settings.exploit_compatibility"))
-                Spacer()
-                Text(language.text(appState.isSupported ? "settings.supported" : "settings.exploit_unverified"))
-                    .foregroundStyle(appState.isSupported ? Color.green : Color.orange)
-            }
+	private var deviceSection: some View {
+		VStack(alignment: .leading, spacing: 12) {
+			HStack(spacing: 8) {
+				Image(systemName: "checkmark.shield.fill")
+					.foregroundStyle(exploitStatusColor)
+				Text(language.text("settings.exploit_compatibility"))
+					.font(.headline)
+				Spacer()
+				Text(language.text(exploitStatusKey))
+					.font(.subheadline.weight(.semibold))
+					.foregroundStyle(exploitStatusColor)
+			}
+			LabeledContent(language.text("dashboard.hardware_model"), value: AppInfo.displayMachineName)
+			LabeledContent(language.text("settings.ios_version"), value: "\(AppInfo.osVersion) (\(AppInfo.osBuild))")
 
             if appState.kernelExploitApplicable && AppInfo.versionTuple.major < 26 {
                 HStack {
@@ -263,10 +259,26 @@ private struct DashboardView: View {
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
         .background(
-            Color(uiColor: .secondarySystemGroupedBackground),
-            in: RoundedRectangle(cornerRadius: 16, style: .continuous)
-        )
-    }
+				Color(uiColor: .secondarySystemGroupedBackground),
+				in: RoundedRectangle(cornerRadius: 16, style: .continuous)
+			)
+	}
+
+	private var exploitStatusKey: String {
+		if appState.isSupported { return "settings.supported" }
+		if ExploitSupportPolicy.supportedMajorVersions.contains(AppInfo.versionTuple.major) {
+			return "settings.exploit_unverified"
+		}
+		return "settings.unsupported"
+	}
+
+	private var exploitStatusColor: Color {
+		if appState.isSupported { return .green }
+		if ExploitSupportPolicy.supportedMajorVersions.contains(AppInfo.versionTuple.major) {
+			return .orange
+		}
+		return .red
+	}
 }
 
 private extension FreeFireGame {

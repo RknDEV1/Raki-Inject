@@ -47,7 +47,12 @@
 "settings.pairing_import_too_large" = "O arquivo de pareamento excede o limite de 10 MB.";
 "settings.pairing_import_failed" = "Não foi possível ler ou salvar o arquivo de pareamento.";
 "settings.exploit_compatibility" = "Compatibilidade do exploit";
+"settings.unsupported" = "Não suportado";
+"settings.supported" = "Compatível";
 "settings.exploit_unverified" = "Não verificado";
+"settings.verified_versions" = "Versões verificadas";
+"settings.supported_range_summary" = "Verificado: iOS 17.0–17.7.x, iOS 18.0–18.7.1, iOS 26.0–26.6.1 e builds específicos do iOS 27.";
+"settings.supported_versions_footer" = "Somente os builds exatos listados são verificados para o exploit. O iOS pode ser reconhecido mesmo quando o build ainda não foi verificado; pareamento e túnel são estados separados.";
 
 "update.title" = "Atualização disponível";
 "update.message" = "Há uma atualização disponível.";
