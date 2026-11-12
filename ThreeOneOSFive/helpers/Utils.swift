@@ -11,7 +11,7 @@ class AppLog: ObservableObject {
         DispatchQueue.main.async { self.entries.append(msg) }
     }
 }
-func log(_ msg: String) { AppLog.shared.append("[Support Patch] \(msg)") }
+func log(_ msg: String) { AppLog.shared.append("[Raki] \(msg)") }
 
 // Retain the pipe for the app's lifetime so stdout/stderr stay redirected.
 private var logCapturePipe: Pipe?
@@ -130,8 +130,8 @@ enum AppPaths {
 
 enum AppUpdateChecker {
     static let dismissedVersionKey = "update.dismissedVersion"
-    static let apiURL = URL(string: "https://t.me/hole30601")!
-    static let fallbackURL = URL(string: "https://t.me/hole30601")!
+    static let apiURL = URL(string: "https://github.com/RknDEV1/Raki-Inject")!
+    static let fallbackURL = URL(string: "https://github.com/RknDEV1/Raki-Inject")!
 
     struct Offer: Identifiable {
         let id = UUID()

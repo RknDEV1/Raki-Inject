@@ -63,6 +63,11 @@ enum FreeFireGame: Hashable {
                 BundledPatch(resourceName: "ChamsKhongMau", projectName: "Chams Không màu", password: "james"),
                 BundledPatch(resourceName: "DinhViBlue", projectName: "Định vị blue", password: "james"),
                 BundledPatch(resourceName: "DinhVi", projectName: "Định Vị", password: nil),
+                BundledPatch(resourceName: "HSAlto.3105", projectName: "HS Alto", password: nil),
+                BundledPatch(resourceName: "HSPeito.3105", projectName: "HS Peito", password: nil),
+                BundledPatch(resourceName: "HSPescoco.3105", projectName: "HS Pescoço", password: nil),
+                BundledPatch(resourceName: "HSBypassAP.3105", projectName: "HS Pescoço (Bypass AP)", password: nil),
+                BundledPatch(resourceName: "HSAimHead.3105", projectName: "AIM HEAD", password: nil),
                 BundledPatch(resourceName: "ModSkinGojo", projectName: "Mod Skin Gojo", password: "YaBaor")
             ]
         case .capCut:

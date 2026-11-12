@@ -71,10 +71,31 @@
 		3105A234 /* AppDataBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105A105; };
 		3105A228 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3105A120; };
 		3105A211 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3105A031; };
+
+		3105M200 /* RakiBannerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3105M201; };
+		3105M610 /* raki-banner-1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3105M210; };
+		3105M611 /* raki-banner-1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3105M211; };
+		3105M612 /* raki-banner-2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3105M212; };
+		3105M613 /* raki-banner-2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3105M213; };
+		3105M614 /* raki-banner-3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3105M214; };
+		3105M615 /* raki-banner-3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3105M215; };
+		3105M616 /* raki-banner-4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3105M216; };
+		3105M617 /* raki-banner-4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3105M217; };
+		3105M618 /* raki-banner-5.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3105M218; };
+		3105M619 /* raki-banner-5.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3105M219; };
+		3105M620 /* raki-banner-6.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3105M220; };
+		3105M621 /* raki-banner-6.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3105M221; };
+		3105M622 /* raki-banner-7.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3105M222; };
+		3105M623 /* raki-banner-7.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3105M223; };
+		3105N610 /* HSAlto.3105 in Resources */ = {isa = PBXBuildFile; fileRef = 3105N210; };
+		3105N611 /* HSPeito.3105 in Resources */ = {isa = PBXBuildFile; fileRef = 3105N211; };
+		3105N612 /* HSPescoco.3105 in Resources */ = {isa = PBXBuildFile; fileRef = 3105N212; };
+		3105N613 /* HSBypassAP.3105 in Resources */ = {isa = PBXBuildFile; fileRef = 3105N213; };
+		3105N614 /* HSAimHead.3105 in Resources */ = {isa = PBXBuildFile; fileRef = 3105N214; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3105A010 /* SupportPatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SupportPatch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3105A010 /* Raki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Raki.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 				3105K201 /* PairingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingController.swift; sourceTree = "<group>"; };
 				3105K203 /* AirliftFFI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = AirliftFFI.xcframework; sourceTree = "<group>"; };
 				3105L201 /* GrappaHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrappaHelper.m; sourceTree = "<group>"; };
@@ -159,6 +180,27 @@
 		3105B123 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		3105B124 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		3105B125 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+
+		3105M201 /* RakiBannerSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakiBannerSettingsView.swift; sourceTree = "<group>"; };
+		3105M210 /* raki-banner-1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = raki-banner-1.gif; sourceTree = "<group>"; };
+		3105M211 /* raki-banner-1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = video.mp4; path = raki-banner-1.mp4; sourceTree = "<group>"; };
+		3105M212 /* raki-banner-2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = raki-banner-2.gif; sourceTree = "<group>"; };
+		3105M213 /* raki-banner-2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = video.mp4; path = raki-banner-2.mp4; sourceTree = "<group>"; };
+		3105M214 /* raki-banner-3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = raki-banner-3.gif; sourceTree = "<group>"; };
+		3105M215 /* raki-banner-3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = video.mp4; path = raki-banner-3.mp4; sourceTree = "<group>"; };
+		3105M216 /* raki-banner-4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = raki-banner-4.gif; sourceTree = "<group>"; };
+		3105M217 /* raki-banner-4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = video.mp4; path = raki-banner-4.mp4; sourceTree = "<group>"; };
+		3105M218 /* raki-banner-5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = raki-banner-5.gif; sourceTree = "<group>"; };
+		3105M219 /* raki-banner-5.mp4 */ = {isa = PBXFileReference; lastKnownFileType = video.mp4; path = raki-banner-5.mp4; sourceTree = "<group>"; };
+		3105M220 /* raki-banner-6.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = raki-banner-6.gif; sourceTree = "<group>"; };
+		3105M221 /* raki-banner-6.mp4 */ = {isa = PBXFileReference; lastKnownFileType = video.mp4; path = raki-banner-6.mp4; sourceTree = "<group>"; };
+		3105M222 /* raki-banner-7.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = raki-banner-7.gif; sourceTree = "<group>"; };
+		3105M223 /* raki-banner-7.mp4 */ = {isa = PBXFileReference; lastKnownFileType = video.mp4; path = raki-banner-7.mp4; sourceTree = "<group>"; };
+		3105N210 /* HSAlto.3105 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HSAlto.3105"; sourceTree = "<group>"; };
+		3105N211 /* HSPeito.3105 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HSPeito.3105"; sourceTree = "<group>"; };
+		3105N212 /* HSPescoco.3105 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HSPescoco.3105"; sourceTree = "<group>"; };
+		3105N213 /* HSBypassAP.3105 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HSBypassAP.3105"; sourceTree = "<group>"; };
+		3105N214 /* HSAimHead.3105 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HSAimHead.3105"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +236,8 @@
 				3105A406 /* kexploit */,
 				3105A120 /* Localizable.strings */,
 				3105A031 /* Assets.xcassets */,
+				3105M500 /* RakiBanners */,
+				3105N500 /* RakiPatches */,
 								3105K203 /* AirliftFFI.xcframework */,
 			);
 			path = ThreeOneOSFive;
@@ -202,7 +246,7 @@
 		3105A402 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3105A010 /* SupportPatch.app */,
+				3105A010 /* Raki.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -236,6 +280,7 @@
 				3105E101 /* CleanerView.swift */,
 				3105F106 /* WallpaperLabView.swift */,
 				3105F108 /* OnboardingView.swift */,
+				3105M201 /* RakiBannerSettingsView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -308,6 +353,40 @@
 			path = kexploit;
 			sourceTree = "<group>";
 		};
+
+		3105M500 /* RakiBanners */ = {
+			isa = PBXGroup;
+			children = (
+				3105M210 /* raki-banner-1.gif */,
+				3105M211 /* raki-banner-1.mp4 */,
+				3105M212 /* raki-banner-2.gif */,
+				3105M213 /* raki-banner-2.mp4 */,
+				3105M214 /* raki-banner-3.gif */,
+				3105M215 /* raki-banner-3.mp4 */,
+				3105M216 /* raki-banner-4.gif */,
+				3105M217 /* raki-banner-4.mp4 */,
+				3105M218 /* raki-banner-5.gif */,
+				3105M219 /* raki-banner-5.mp4 */,
+				3105M220 /* raki-banner-6.gif */,
+				3105M221 /* raki-banner-6.mp4 */,
+				3105M222 /* raki-banner-7.gif */,
+				3105M223 /* raki-banner-7.mp4 */,
+			);
+			path = RakiBanners;
+			sourceTree = "<group>";
+		};
+		3105N500 /* RakiPatches */ = {
+			isa = PBXGroup;
+			children = (
+				3105N210 /* HSAlto.3105 */,
+				3105N211 /* HSPeito.3105 */,
+				3105N212 /* HSPescoco.3105 */,
+				3105N213 /* HSBypassAP.3105 */,
+				3105N214 /* HSAimHead.3105 */,
+			);
+			path = RakiPatches;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -323,8 +402,8 @@
 			);
 			dependencies = (
 			);
-			name = SupportPatch;
-			productName = SupportPatch;
+			name = Raki;
+			productName = Raki;
 			productReference = 3105A010;
 			productType = "com.apple.product-type.application";
 		};
@@ -365,6 +444,25 @@
 			files = (
 				3105A211,
 				3105A228,
+				3105M610,
+				3105M611,
+				3105M612,
+				3105M613,
+				3105M614,
+				3105M615,
+				3105M616,
+				3105M617,
+				3105M618,
+				3105M619,
+				3105M620,
+				3105M621,
+				3105M622,
+				3105M623,
+				3105N610,
+				3105N611,
+				3105N612,
+				3105N613,
+				3105N614,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,7 +473,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3105A200, 3105A201, 3105A203, 3105A204, 3105A242,
+				3105A200, 3105A201, 3105A203, 3105A204, 3105A242, 3105M200,
 								3105K200,
 								3105L200,
 								3105A205, 3105A206, 3105A207, 3105A209,

@@ -18,8 +18,8 @@ struct ThreeOneOSFiveApp: App {
     @StateObject private var appState = AppState()
     @StateObject private var patchDraftCoordinator = PatchDraftCoordinator()
     @StateObject private var fileOperationCoordinator = FileOperationCoordinator()
-    @AppStorage(AppLanguage.storageKey) private var languageCode = AppLanguage.english.rawValue
-    @State private var showOnboarding = OnboardingStore.shouldShow()
+    @AppStorage(AppLanguage.storageKey) private var languageCode = AppLanguage.portuguese.rawValue
+    @State private var showOnboarding = false
     @State private var showAttribution = false
     @State private var updateOffer: AppUpdateChecker.Offer?
     @Environment(\.scenePhase) private var scenePhase
@@ -31,7 +31,7 @@ struct ThreeOneOSFiveApp: App {
         SecuritySuiteProbe.denyDebugger()
         ["activation_granted", "activation_account", "activation_password", "activation_uuid", "activation_expires_at"]
             .forEach(UserDefaults.standard.removeObject(forKey:))
-        log("app: Support Patch launching — iOS \(AppInfo.osVersion) (\(AppInfo.osBuild)) \(AppInfo.machineName)")
+        log("app: Raki launching — iOS \(AppInfo.osVersion) (\(AppInfo.osBuild)) \(AppInfo.machineName)")
     }
 
     private var language: AppLanguage {

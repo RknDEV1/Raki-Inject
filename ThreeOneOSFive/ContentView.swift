@@ -65,7 +65,7 @@ struct ContentView: View {
                     )
                 }
             }
-            .navigationTitle("Support Patch")
+            .navigationTitle("Raki")
             .navigationSplitViewColumnWidth(min: 210, ideal: 240, max: 300)
         } detail: {
             sectionContent(selectedVisibleSection)
@@ -135,6 +135,36 @@ private extension AppSection {
     }
 }
 
+private struct RakiHeroBanner: View {
+    @AppStorage("raki.banner.index") private var selectedIndex = 0
+    @AppStorage("raki.banner.enabled") private var isEnabled = true
+    @Environment(\.scenePhase) private var scenePhase
+
+    var body: some View {
+        Group {
+            if isEnabled,
+               let url = Bundle.main.url(forResource: "raki-banner-\(selectedIndex + 1)", withExtension: "mp4") {
+                RakiLoopingVideoView(url: url, isPlaying: scenePhase == .active)
+            } else {
+                LinearGradient(
+                    colors: [Color.black, Color(white: 0.16)],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+            }
+        }
+        .frame(height: 154)
+        .frame(maxWidth: .infinity)
+        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .stroke(Color.white.opacity(0.10), lineWidth: 1)
+        }
+        .padding(.horizontal, 16)
+        .accessibilityLabel("Fundo animado do Raki")
+    }
+}
+
 // MARK: - DashboardView
 private struct DashboardView: View {
     @Environment(\.appLanguage) private var language
@@ -143,16 +173,16 @@ private struct DashboardView: View {
     @State private var showLogs = false
     var body: some View {
         NavigationStack {
-            VStack(spacing: 7) {
-                deviceSection
-                    .fixedSize(horizontal: false, vertical: true)
-                VStack(spacing: 12) {
-                    FreeFireGameEntryView(game: .max)
-                    FreeFireGameEntryView(game: .regular)
-                    FreeFireGameEntryView(game: .capCut)
-                }
-                .frame(maxHeight: .infinity, alignment: .top)
+			ScrollView(.vertical, showsIndicators: false) {
+				VStack(spacing: 14) {
+					rakiHeader
+					RakiHeroBanner()
+					deviceSection
+					FreeFireGameEntryView(game: .regular)
+				}
+                .padding(.bottom, 18)
             }
+            .background(Color(uiColor: .systemBackground))
             .navigationBarTitleDisplayMode(.inline)
             .tint(AppTheme.accent)
             .toolbar {
@@ -174,25 +204,39 @@ private struct DashboardView: View {
         }
     }
 
-    private var deviceSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text(language.text("common.device"))
-                .font(.headline)
-                .foregroundStyle(.secondary)
-            LabeledContent(language.text("dashboard.hardware_model")) {
-                Text(AppInfo.displayMachineName)
-                    .font(.body.monospaced())
+    private var rakiHeader: some View {
+        HStack(spacing: 12) {
+            AppLogo(size: 42)
+            VStack(alignment: .leading, spacing: 2) {
+                Text("Raki")
+                    .font(.title3.weight(.bold))
+                Text("Free Fire")
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(.secondary)
             }
-            LabeledContent(language.text("settings.ios_version")) {
-                Text("\(AppInfo.osVersion) (\(AppInfo.osBuild))")
-                    .font(.body.monospaced())
-            }
-            HStack {
-                Text(language.text("settings.exploit_compatibility"))
-                Spacer()
-                Text(language.text(appState.isSupported ? "settings.supported" : "settings.exploit_unverified"))
-                    .foregroundStyle(appState.isSupported ? Color.green : Color.orange)
-            }
+            Spacer()
+            Label("Ativo", systemImage: "circle.fill")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(.green)
+        }
+        .padding(.horizontal, 16)
+        .padding(.top, 8)
+    }
+
+	private var deviceSection: some View {
+		VStack(alignment: .leading, spacing: 12) {
+			HStack(spacing: 8) {
+				Image(systemName: "checkmark.shield.fill")
+					.foregroundStyle(exploitStatusColor)
+				Text(language.text("settings.exploit_compatibility"))
+					.font(.headline)
+				Spacer()
+				Text(language.text(exploitStatusKey))
+					.font(.subheadline.weight(.semibold))
+					.foregroundStyle(exploitStatusColor)
+			}
+			LabeledContent(language.text("dashboard.hardware_model"), value: AppInfo.displayMachineName)
+			LabeledContent(language.text("settings.ios_version"), value: "\(AppInfo.osVersion) (\(AppInfo.osBuild))")
 
             if appState.kernelExploitApplicable && AppInfo.versionTuple.major < 26 {
                 HStack {
@@ -215,10 +259,26 @@ private struct DashboardView: View {
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
         .background(
-            Color(uiColor: .secondarySystemGroupedBackground),
-            in: RoundedRectangle(cornerRadius: 16, style: .continuous)
-        )
-    }
+				Color(uiColor: .secondarySystemGroupedBackground),
+				in: RoundedRectangle(cornerRadius: 16, style: .continuous)
+			)
+	}
+
+	private var exploitStatusKey: String {
+		if appState.isSupported { return "settings.supported" }
+		if ExploitSupportPolicy.supportedMajorVersions.contains(AppInfo.versionTuple.major) {
+			return "settings.exploit_unverified"
+		}
+		return "settings.unsupported"
+	}
+
+	private var exploitStatusColor: Color {
+		if appState.isSupported { return .green }
+		if ExploitSupportPolicy.supportedMajorVersions.contains(AppInfo.versionTuple.major) {
+			return .orange
+		}
+		return .red
+	}
 }
 
 private extension FreeFireGame {
@@ -250,25 +310,25 @@ private extension FreeFireGame {
         "https://play-lh.googleusercontent.com/M78HyakHaxKrjoeqYx41E9DXfVYYtx67nvc7Ks4G4zFQeaAJdGCi8gzzGSrHIwlrmnJS6zD9S4fAXqdEwfuHQAQ=w480-h960"
     }
 
-    var aimProjectNames: [String] {
-        switch self {
-        case .max: return ["Aim Neck", "Aim Chest", "Aim Body", "Aim Drag", "Aim Magic", "Aim Đầu"]
-        case .regular: return ["Aim Body Free Fire", "Aim Drag Free Fire", "Aim Neck Free Fire", "Aim Head Free Fire", "Aim Magic Free Fire", "Unlock FPS 144"]
-        case .capCut: return ["CapCut Pro"]
+	var aimProjectNames: [String] {
+		switch self {
+		case .max: return ["Aim Neck", "Aim Chest", "Aim Body", "Aim Drag", "Aim Magic", "Aim Đầu"]
+		case .regular: return ["Aim Body Free Fire", "Aim Drag Free Fire", "Aim Neck Free Fire", "Aim Head Free Fire", "Aim Magic Free Fire", "Unlock FPS 144", "HS Alto", "HS Peito", "HS Pescoço", "HS Pescoço (Bypass AP)", "AIM HEAD"]
+		case .capCut: return ["CapCut Pro"]
         }
     }
 
     var locationProjectNames: [String] {
         switch self {
         case .max: return ["Súng Trắng", "Chạm Đỏ"]
-        case .regular: return [
-                "Chams + Holo tím",
-                "Chams Không màu",
-                "ChamsKhongMau",
-                "Định vị blue",
-                "DinhViBlue",
-                "Định Vị"
-            ]
+		case .regular: return [
+				"Chams + Holo tím",
+				"Chams Không màu",
+				"ChamsKhongMau",
+				"Định vị blue",
+				"DinhViBlue",
+				"Định Vị"
+			]
         case .capCut: return []
         }
     }
@@ -297,24 +357,19 @@ private extension FreeFireGame {
 
 // MARK: - FreeFireGameEntryView
 private struct FreeFireGameEntryView: View {
-    @Environment(\.appLanguage) private var language
-    let game: FreeFireGame
-    @State private var isAvailable: Bool
-    @State private var showNotice = false
-    @State private var navigateToPatch = false
+	@Environment(\.appLanguage) private var language
+	let game: FreeFireGame
+	@State private var isAvailable: Bool
+	@State private var navigateToPatch = false
 
     init(game: FreeFireGame) {
         self.game = game
         _isAvailable = State(initialValue: game.canOpen())
     }
 
-    var body: some View {
-        Button {
-            if game == .max || game == .regular {
-                showNotice = true
-            } else {
-                navigateToPatch = true
-            }
+	var body: some View {
+		Button {
+			navigateToPatch = true
         } label: {
             VStack(spacing: 10) {
                 FreeFireArtwork(game: game, size: 68)
@@ -339,17 +394,10 @@ private struct FreeFireGameEntryView: View {
         }
         .buttonStyle(.plain)
         .disabled(!isAvailable)
-        .navigationDestination(isPresented: $navigateToPatch) {
-            FreeFirePatchView(game: game)
-        }
-        .alert(language.text("freefire.notice_title"), isPresented: $showNotice) {
-            Button(language.text("freefire.notice_confirm")) {
-                navigateToPatch = true
-            }
-        } message: {
-            Text(language.text("freefire.notice_message"))
-        }
-        .tint(AppTheme.accent)
+		.navigationDestination(isPresented: $navigateToPatch) {
+			FreeFirePatchView(game: game)
+		}
+		.tint(AppTheme.accent)
         .padding(.horizontal, 16)
         .padding(.top, 0)
         .onAppear {
@@ -418,6 +466,11 @@ private struct FreeFirePatchView: View {
         case "Aim Head Free Fire": return language.text("freefire.aim_head")
         case "Aim Magic Free Fire": return language.text("freefire.aim_magic")
         case "Unlock FPS 144": return language.text("freefire.unlock_fps_144")
+        case "HS Alto": return "HS Alto"
+        case "HS Peito": return "HS Peito"
+        case "HS Pescoço": return "HS Pescoço"
+        case "HS Pescoço (Bypass AP)": return "HS Pescoço (Bypass AP)"
+        case "AIM HEAD": return "AIM HEAD"
         default: return item.project?.name ?? language.text("freefire.aim_file")
         }
     }

@@ -50,7 +50,7 @@
 "settings.exploit_unverified" = "Sin verificar";
 
 "update.title" = "Actualización disponible";
-"update.message" = "Support Patch %@ está disponible en Telegram.";
+"update.message" = "Há uma atualização disponível.";
 "update.agree" = "OK";
 "update.dismiss" = "No volver a mostrar";
 "patch.error.wrong_password" = "Contraseña incorrecta.";
@@ -90,7 +90,7 @@
 "freefire.open_game" = "Abrir Free Fire Max";
 "freefire.open_game_regular" = "Abrir Free Fire";
 
-"attribution.title" = "Acerca de Support Patch";
+"attribution.title" = "Acerca de Raki";
 "attribution.subtitle" = "Información del proyecto";
 "attribution.link_section" = "Enlaces del proyecto";
 "attribution.url" = "URL";
@@ -101,16 +101,16 @@
 "onboarding.language_title" = "Elige tu idioma";
 "onboarding.language_subtitle" = "Puedes cambiarlo más tarde en Configuración.";
 "onboarding.language_hint" = "Selecciona un idioma para continuar.";
-"onboarding.welcome_title" = "Bienvenido a Support Patch";
+"onboarding.welcome_title" = "Bienvenido a Raki";
 "onboarding.welcome_message" = "Desarrollado por Hole30601";
-"onboarding.welcome_badge" = "Identidad oficial de Support Patch";
+"onboarding.welcome_badge" = "Identidad oficial de Raki";
 "onboarding.versions_title" = "Versiones de iOS compatibles";
-"onboarding.versions_subtitle" = "Support Patch solo permite los identificadores de compilación exactos que aparecen en Configuración.";
+"onboarding.versions_subtitle" = "Raki solo permite los identificadores de compilación exactos que aparecen en Configuración.";
 "onboarding.versions_footer" = "Este dispositivo: iOS %@ (%@)";
 "onboarding.build_count" = "%@ compilaciones exactas";
 "onboarding.beta" = "Beta";
 "onboarding.install_title" = "Requisitos del certificado";
-"onboarding.install_message" = "Support Patch requiere un método de firma compatible para acceder a las funciones del dispositivo.";
+"onboarding.install_message" = "Raki requiere un método de firma compatible para acceder a las funciones del dispositivo.";
 "onboarding.install_ok" = "Funciona con certificados empresariales, incluidos eSign e instalaciones empresariales similares.";
 "onboarding.install_bad" = "No funciona con SideStore, AltStore, 3uTools o LiveContainer.";
 "onboarding.install_footer" = "Usa un certificado compatible antes de continuar.";
@@ -141,7 +141,7 @@
 "dashboard.kernel_running" = "Activando…";
 "dashboard.kernel_active" = "Activo";
 "dashboard.kernel_inactive" = "Inactivo";
-"dashboard.enterprise_signing" = "Support Patch solo funciona cuando se firma con un certificado empresarial. SideStore, AltStore, 3uTools y LiveContainer no son compatibles.";
+"dashboard.enterprise_signing" = "Raki solo funciona cuando se firma con un certificado empresarial. SideStore, AltStore, 3uTools y LiveContainer no son compatibles.";
 "dashboard.features" = "Funciones";
 "dashboard.features_footer" = "Activa Limpieza o Fondo de pantalla para mostrar esa función en la navegación de la app.";
 "tab.home" = "Inicio";
@@ -168,5 +168,5 @@
 "cleaner.clean_button" = "Limpiar %@";
 "cleaner.cleaning" = "Limpiando…";
 "cleaner.confirm_title" = "¿Eliminar datos temporales?";
-"cleaner.confirm_message" = "Support Patch eliminará permanentemente Library/Caches y tmp de %lld apps seleccionadas (%@). Cierra estas apps antes. La próxima apertura puede ir más lento al reconstruir cachés. Esta acción no se puede deshacer.";
+"cleaner.confirm_message" = "Raki eliminará permanentemente Library/Caches y tmp de %lld apps seleccionadas (%@). Cierra estas apps antes. La próxima apertura puede ir más lento al reconstruir cachés. Esta acción no se puede deshacer.";
 "cleaner.confirm_action" = "Limpiar ahora";
